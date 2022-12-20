@@ -1,4 +1,5 @@
 import {
+  Divider,
   Drawer,
   List,
   ListItem,
@@ -7,7 +8,7 @@ import {
   ListItemText,
 } from '@mui/material'
 import { FC } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Account from '../Account'
 import s from './styles.module.sass'
 import InboxIcon from '@mui/icons-material/MoveToInbox'
@@ -44,6 +45,8 @@ const menu: IMenu[] = [
 ]
 
 const Main: FC = () => {
+  const location = useLocation()
+
   // const navigate= useNavigate()
   // const noAuth = true
   // useEffect(() => {
@@ -52,11 +55,20 @@ const Main: FC = () => {
 
   const renderMenu = () =>
     menu.map((item: IMenu) => (
-      <ListItem key={item.id} disablePadding>
-        <ListItemButton>
-            <item.icon />
-          <ListItemText primary={item.title} />
-        </ListItemButton>
+      <ListItem
+        key={item.id}
+        disablePadding
+        selected={item.to === location.pathname}
+        className={s.SidebatListItem}
+      >
+        <ListItemButton
+          component={() => (
+            <a href={item.to} className={s.SidebarListItemLink}>
+              <item.icon color='primary' />
+              <p className={s.SidebarItemTitle}>{item.title}</p>
+            </a>
+          )}
+        ></ListItemButton>
       </ListItem>
     ))
 
@@ -68,7 +80,15 @@ const Main: FC = () => {
         open={true}
         className={s.Sidebar}
       >
-        <List>{renderMenu()}</List>
+        <div>
+          <h2 className={s.Logo}>Task Tracker</h2>
+          <div className={s.SidebarDivider} />
+          <List>{renderMenu()}</List>
+        </div>
+        <footer className={s.AuthorInfo}>
+          Crafted by <a href='https://github.com/StVictoria' className={s.AuthorLink}>StVictoria</a>,
+          2022
+        </footer>
       </Drawer>
       <Routes>
         <Route index element={<Account />} />
