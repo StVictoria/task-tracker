@@ -1,0 +1,29 @@
+.Lists
+    display: flex
+    margin-top: 40px
+
+.List
+    width: 27%
+    padding: 20px
+    &:not(:last-child)
+        margin-right: 3%
+
+.ListItem
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 20px
+
+.ListItemLeft
+    display: flex
+    align-items: center
+    width: 70%
+    > p
+        text-overflow: ellipsis
+        overflow: hidden
+        white-space: nowrap
+
+.coins
+    color: #3fc438
+    &.notUseful
+        color: red

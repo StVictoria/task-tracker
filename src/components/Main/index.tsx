@@ -1,18 +1,31 @@
 import { Drawer, List, ListItem, ListItemButton } from '@mui/material'
-import { FC } from 'react'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { FC, useEffect } from 'react'
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import { ROUTES } from '../../constants/ROUTES'
 import { IMenu, menu } from '../../static/menu'
 import Account from '../Account'
+import MyList from '../MyList'
 import s from './styles.module.sass'
 
 const Main: FC = () => {
   const location = useLocation()
+  const navigate = useNavigate()
 
   // const navigate= useNavigate()
   // const noAuth = true
   // useEffect(() => {
   //   if (noAuth) navigate('/auth')
   // }, [])
+
+  useEffect(() => {
+    if (
+      !['/account', '/my-list', '/suggestions'].includes(
+        location.pathname
+      )
+    ) {
+      navigate('/account')
+    }
+  }, [])
 
   const renderMenu = () =>
     menu.map((item: IMenu) => (
@@ -42,7 +55,7 @@ const Main: FC = () => {
         className={s.Sidebar}
       >
         <div>
-          <h2 className={s.Logo}>Task Tracker</h2>
+          <h1 className={s.Logo}>Task Tracker</h1>
           <div className={s.SidebarDivider} />
           <List>{renderMenu()}</List>
         </div>
@@ -54,9 +67,13 @@ const Main: FC = () => {
           , 2022
         </footer>
       </Drawer>
-      <Routes>
-        <Route index element={<Account />} />
+      <main className={s.Main}>
+        <Routes>
+        <Route path="/account" element={<Account />} />
+        <Route path="/my-list" element={<MyList />} />
       </Routes>
+      </main>
+      
     </div>
   )
 }
