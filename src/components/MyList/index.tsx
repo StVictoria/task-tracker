@@ -12,16 +12,20 @@ const MyList: FC = () => {
 
   const renderList = (list: any) =>
     list.map((item: IToDo) => (
-      <ToDo id={item.id} title={item.title} coins={item.coins} isUseful={item.useful} />
+      <ToDo
+        id={item.id}
+        title={item.title}
+        coins={item.coins}
+        isUseful={item.useful}
+      />
     ))
   return (
     <>
       <SectionTitle title='My List' />
       <div className={s.contentWrapper}>
-      <ToDoForm />
-      <Paper className={s.list}>{renderList(myList)}</Paper>
+        <ToDoForm />
+        <Paper className={s.list}>{renderList(myList)}</Paper>
       </div>
-      
     </>
   )
 }
