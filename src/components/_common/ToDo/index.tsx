@@ -9,7 +9,7 @@ import { $myList, IToDo, setMyList } from '../../../effector/userInfo'
 interface IToDoProps {
   id: number
   isUseful: boolean
-  coins: number
+  coins: number | null
   title: string
 }
 

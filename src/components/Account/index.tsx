@@ -1,7 +1,7 @@
 import { useStore } from 'effector-react'
 import { FC } from 'react'
 import { $account } from '../../effector/userInfo'
-import SectionTitle from '../common/SectionTitle'
+import SectionTitle from '../_common/SectionTitle'
 import s from './styles.module.sass'
 
 const Account: FC = () => {

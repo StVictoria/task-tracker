@@ -4,7 +4,7 @@ export interface IToDo {
     id: number
     title: string
     useful: boolean
-    coins: number
+    coins: number | null
 }
 
 export const setMyList = createEvent<IToDo[]>()
