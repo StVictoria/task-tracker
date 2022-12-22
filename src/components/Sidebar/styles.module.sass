@@ -1,0 +1,42 @@
+@import '/src/styles/vars'
+
+.sidebar
+    > div
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        background-color: $black
+        width: 250px
+        color: $white
+
+.logo
+    width: 100%
+    padding-left: 30px
+    box-sizing: border-box
+
+.divider
+    width: 100%
+    height: 1px
+    background-color: $disabled
+
+.sidebarListItem:not(:last-child)
+    margin-bottom: 20px
+
+.sidebarLink
+    display: flex
+    align-items: center
+    width: 100%
+    padding: 10px 0 10px 30px
+
+.sidebarLinkTitle
+    margin-left: 13px
+
+.authorInfo
+    width: 100%
+    text-align: center
+    padding-bottom: 10px
+    color: $disabled
+
+.authorLink
+    color: $primary
+    opacity: 0.7
