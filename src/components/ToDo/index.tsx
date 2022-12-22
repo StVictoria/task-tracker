@@ -4,7 +4,7 @@ import { FC, memo } from 'react'
 import s from './styles.module.sass'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useStore } from 'effector-react'
-import { $myList, IToDo, setMyList } from '../../effector/myList'
+import { $myList, IToDo, setMyList } from '../../effector/userInfo'
 
 interface IToDoProps {
   id: number

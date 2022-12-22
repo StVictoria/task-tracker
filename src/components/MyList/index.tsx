@@ -3,7 +3,7 @@ import { FC } from 'react'
 import s from './styles.module.sass'
 import SectionTitle from '../SectionTitle'
 import ToDo from '../ToDo'
-import { $myList, IToDo } from '../../effector/myList'
+import { $myList, IToDo } from '../../effector/userInfo'
 import { useStore } from 'effector-react'
 
 const MyList: FC = () => {
