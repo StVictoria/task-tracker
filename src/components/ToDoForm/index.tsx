@@ -6,12 +6,9 @@ import { Checkbox } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import { useForm } from 'effector-forms'
 import { todoForm, clearToDoForm } from '../../effector/todoForm'
-import { $myList, setMyList } from '../../effector/userInfo'
-import { useStore } from 'effector-react'
 
 const ToDoForm: FC = () => {
   const { fields, submit } = useForm(todoForm)
-  const myList = useStore($myList)
 
   const handleChange = (e: any, field: 'todoName' | 'coins' | 'isUseful') => {
     const { value } = e.target
@@ -33,17 +30,7 @@ const ToDoForm: FC = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault()
-    setMyList([
-      ...myList,
-      {
-        id: myList.length,
-        title: fields.todoName.value,
-        useful: fields.isUseful.value,
-        coins: fields.coins.value,
-      },
-    ])
-    clearToDoForm()
-    // submit()
+    submit()
   }
 
   return (

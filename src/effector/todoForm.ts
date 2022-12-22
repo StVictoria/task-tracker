@@ -1,6 +1,7 @@
 import { Rules } from './rules';
 import { createForm } from 'effector-forms';
 import { createEffect, createEvent, forward } from 'effector';
+import { $myList, setMyList } from './userInfo';
 
 interface ICreateToDoDTO {
     todoName: string
@@ -11,7 +12,16 @@ interface ICreateToDoDTO {
 export const clearToDoForm = createEvent()
 
 export const createToDoFx = createEffect(async (values: ICreateToDoDTO) => {
-    console.log(values)
+    setMyList([
+        ...$myList.getState(),
+        {
+          id: $myList.getState().length,
+          title: values.todoName,
+          useful: values.isUseful,
+          coins: +values.coins,
+        },
+      ])
+      clearToDoForm()
 })
 
 export const todoForm = createForm({
