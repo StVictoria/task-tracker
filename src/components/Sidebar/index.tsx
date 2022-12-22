@@ -18,7 +18,7 @@ const Sidebar: FC<ISidebar> = ({ currentSection, setCurrentSection }) => {
         className={s.sidebarListItem}
         onClick={() => setCurrentSection(item.to)}
       >
-        <ListItemButton>
+        <ListItemButton className={s.sidebarButton}>
           <item.icon color='primary' />
           <p className={s.sidebarLinkTitle}>{item.title}</p>
         </ListItemButton>

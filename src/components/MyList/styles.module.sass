@@ -1,23 +1,24 @@
-.myLists
-    display: flex
-    margin-top: 40px
+@import '/src/styles/vars'
 
 .list
-    width: 27%
     padding: 20px
-    &:not(:last-child)
-        margin-right: 3%
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: 60%
 
 .listItem
     display: flex
     justify-content: space-between
     align-items: center
-    margin-bottom: 20px
+    width: 100%
+    &:not(:last-child)
+        margin-bottom: 20px
 
 .listItemLeft
     display: flex
     align-items: center
-    width: 70%
+    width: 80%
     > p
         text-overflow: ellipsis
         overflow: hidden

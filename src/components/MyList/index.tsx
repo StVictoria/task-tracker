@@ -3,6 +3,7 @@ import React, { FC } from 'react'
 import s from './styles.module.sass'
 import DeleteIcon from '@mui/icons-material/Delete'
 import clsx from 'clsx'
+import SectionTitle from '../SectionTitle'
 
 const todoList = [
   { id: 0, title: 'Buy food', useful: true, coins: 100 },
@@ -10,7 +11,12 @@ const todoList = [
   { id: 2, title: 'Watch movie', useful: false, coins: 300 },
   { id: 3, title: 'Play with kids', useful: true, coins: 200 },
   { id: 4, title: 'Find a job', useful: true, coins: 2000 },
-  { id: 5, title: 'Hang out Hang out Hang out Hang out Hang out Hang outHang out', useful: false, coins: 45000 },
+  {
+    id: 5,
+    title: 'Hang out Hang out Hang out Hang out Hang out Hang outHang out',
+    useful: false,
+    coins: 45000,
+  },
 ]
 
 const MyList: FC = () => {
@@ -22,7 +28,7 @@ const MyList: FC = () => {
           <p title={item.title}>{item.title}</p>
         </div>
 
-        <p className={clsx(s.coins, {[s.notUseful]: !item.useful})}>
+        <p className={clsx(s.coins, { [s.notUseful]: !item.useful })}>
           {item.useful ? '+' : '-'}
           {item.coins}
         </p>
@@ -33,12 +39,8 @@ const MyList: FC = () => {
     ))
   return (
     <>
-      <h2>My Lists</h2>
-      <div className={s.myLists}>
-        <Paper className={s.list}>{renderList(todoList)}</Paper>
-        <Paper className={s.list}>List 2</Paper>
-        <Paper className={s.list}>List 3</Paper>
-      </div>
+      <SectionTitle title='My List' />
+      <Paper className={s.list}>{renderList(todoList)}</Paper>
     </>
   )
 }
