@@ -18,8 +18,73 @@
     />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Task Tracker</title>
+
+    <style>
+      @keyframes animate {
+        0%,
+        100% {
+          stroke-dashoffset: 440;
+        }
+        50% {
+          stroke-dashoffset: 0;
+        }
+        50.1% {
+          stroke-dashoffset: 880;
+        }
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0)
+        }
+        100% {
+          transform: rotate(360deg)
+        }
+      }
+      html {
+        overflow-y: scroll;
+      }
+      body {
+        margin: 0;
+        overflow: hidden;
+        font-family: 'Neutra Text, sans-serif';
+      }
+      .Preloader {
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+      }
+      .Preloader-Logo {
+        width: 150px;
+        height: 150px;
+        animation: rotate 2s linear infinite;
+      }
+      .Preloader-Logo circle {
+        width: 100%;
+        height: 100%;
+        fill: none;
+        stroke-width: 10;
+        stroke: #86c232;
+        stroke-linecap: round;
+        transform: translate(5px, 5px);
+        stroke-dasharray: 440;
+        stroke-dashoffset: 440;
+        animation: animate 4s linear infinite;
+      }
+    </style>
   </head>
   <body>
+    <div id="preloader" class="Preloader Preloader_show">
+      <svg class="Preloader-Logo">
+        <circle cx="70" cy="70" r="70"></circle>
+      </svg>
+    </div>
+
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>

@@ -14,18 +14,18 @@ export const menu: IMenu[] = [
         id: 0,
         title: 'Account',
         icon: AccountBalanceWalletOutlinedIcon,
-        to: '/account',
+        to: 'account',
     },
     {
         id: 1,
-        title: 'My to-do list',
+        title: 'My list',
         icon: FormatListBulletedOutlinedIcon,
-        to: '/my-list',
+        to: 'my-list',
     },
     {
         id: 2,
         title: 'Suggestions',
         icon: TipsAndUpdatesOutlinedIcon,
-        to: '/suggestions',
+        to: 'suggestions',
     },
 ]

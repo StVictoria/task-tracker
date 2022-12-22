@@ -1,5 +1,5 @@
 import { Checkbox, IconButton, Paper } from '@mui/material'
-import { FC } from 'react'
+import React, { FC } from 'react'
 import s from './styles.module.sass'
 import DeleteIcon from '@mui/icons-material/Delete'
 import clsx from 'clsx'
@@ -16,8 +16,8 @@ const todoList = [
 const MyList: FC = () => {
   const renderList = (list: any) =>
     list.map((item: any) => (
-      <div className={s.ListItem}>
-        <div className={s.ListItemLeft}>
+      <div className={s.listItem}>
+        <div className={s.listItemLeft}>
           <Checkbox />
           <p title={item.title}>{item.title}</p>
         </div>
@@ -32,14 +32,14 @@ const MyList: FC = () => {
       </div>
     ))
   return (
-    <div>
+    <>
       <h2>My Lists</h2>
-      <div className={s.Lists}>
-        <Paper className={s.List}>{renderList(todoList)}</Paper>
-        <Paper className={s.List}>List 2</Paper>
-        <Paper className={s.List}>List 3</Paper>
+      <div className={s.myLists}>
+        <Paper className={s.list}>{renderList(todoList)}</Paper>
+        <Paper className={s.list}>List 2</Paper>
+        <Paper className={s.list}>List 3</Paper>
       </div>
-    </div>
+    </>
   )
 }
 

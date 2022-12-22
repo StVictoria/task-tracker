@@ -7,18 +7,29 @@ import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material'
 import theme from './styles/theme'
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
-    </BrowserRouter>
-  </React.StrictMode>
-)
+const handleAppLoaded = () => {
+  const preloader: HTMLElement = document.getElementById('preloader')!
+  preloader.classList.remove('Preloader_show')
+  document.body.style.overflow = 'auto'
+  setTimeout(() => preloader.remove(), 1000)
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+
+const init = () => {
+  window.addEventListener('load', handleAppLoaded)
+
+  root.render(
+    <React.StrictMode>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </BrowserRouter>
+    </React.StrictMode>
+  )
+}
+
+init()
+
 reportWebVitals()
