@@ -1,12 +1,14 @@
 import { Rules } from './rules';
 import { createForm } from 'effector-forms';
-import { createEffect, forward } from 'effector';
+import { createEffect, createEvent, forward } from 'effector';
 
 interface ICreateToDoDTO {
     todoName: string
-    coins: number | null
+    coins: string | number
     isUseful: boolean
 }
+
+export const clearToDoForm = createEvent()
 
 export const createToDoFx = createEffect(async (values: ICreateToDoDTO) => {
     console.log(values)
@@ -19,7 +21,7 @@ export const todoForm = createForm({
             rules: [Rules.notEmpty()]
         },
         coins: {
-            init: null as number | null,
+            init: '' as string,
             rules: [Rules.notEmpty()]
         },
         isUseful: {
@@ -32,4 +34,9 @@ export const todoForm = createForm({
 forward({
     from: todoForm.formValidated,
     to: createToDoFx
+})
+
+forward({
+    from: clearToDoForm,
+    to: todoForm.reset
 })

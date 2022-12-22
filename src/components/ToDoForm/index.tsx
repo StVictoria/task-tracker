@@ -5,7 +5,7 @@ import s from './styles.module.sass'
 import { Checkbox } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import { useForm } from 'effector-forms'
-import { todoForm } from '../../effector/todoForm'
+import { todoForm, clearToDoForm } from '../../effector/todoForm'
 import { $myList, setMyList } from '../../effector/userInfo'
 import { useStore } from 'effector-react'
 
@@ -22,7 +22,8 @@ const ToDoForm: FC = () => {
     }
     // numbers
     if (field === 'coins') {
-      if (value.match('^[0-9]+$') || value.length < 1) fields[field].onChange(trimmedValue)
+      if (value.match('^[0-9]+$') || value.length < 1)
+        fields[field].onChange(trimmedValue)
     }
     // booleans
     if (field === 'isUseful') {
@@ -41,6 +42,7 @@ const ToDoForm: FC = () => {
         coins: fields.coins.value,
       },
     ])
+    clearToDoForm()
     // submit()
   }
 
@@ -84,7 +86,7 @@ const ToDoForm: FC = () => {
         </div>
 
         <footer className={s.actions}>
-          <Button>Clear</Button>
+          <Button onClick={() => clearToDoForm()}>Clear</Button>
           <Button variant='contained' startIcon={<AddIcon />} type='submit'>
             Add
           </Button>
