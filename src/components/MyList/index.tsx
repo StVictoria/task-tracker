@@ -13,6 +13,7 @@ const MyList: FC = () => {
   const renderList = (list: any) =>
     list.map((item: IToDo) => (
       <ToDo
+        key={item.id}
         id={item.id}
         title={item.title}
         coins={item.coins}

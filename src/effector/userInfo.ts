@@ -16,4 +16,5 @@ export const $myList = createStore([
     { id: 2, title: 'Play PS', useful: false, coins: 400 },
     { id: 3, title: 'Hang out', useful: false, coins: 1000 },
 ] as IToDo[]).on(setMyList, (s, newList: IToDo[]) => newList)
-export const $account = createStore(0 as number).on(changeAccount, (s, newAccount: number) => newAccount)
+
+export const $bank = createStore(0 as number).on(changeAccount, (s, newAccount: number) => newAccount)

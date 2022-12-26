@@ -1,7 +1,9 @@
 import { Button } from '@mui/material'
+import { useStore } from 'effector-react'
 import { ethers } from 'ethers'
 import { FC, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { $account, getAccountFx } from '../../effector/auth'
 import Modal from '../_common/Modal'
 import s from './styles.module.sass'
 
@@ -9,25 +11,21 @@ const Auth: FC = () => {
   const [isInstallMMModalOpen, setIsInstallMMModalOpen] = useState(false)
   const [isErrorModalOpen, setIsErrorModalOpen] = useState(false)
 
+  const account = useStore($account)
+
   const navigate = useNavigate()
 
   useEffect(() => {
     if (!window.ethereum) {
       setIsInstallMMModalOpen(true)
     } else {
-      checkExistingAccount()
+      getAccountFx()
     }
   }, [])
 
   useEffect(() => {
-    console.log(window.ethereum._state.account)
-  }, [window.ethereum._state.account])
-
-  const checkExistingAccount = async () => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum)
-    const accounts = await provider.listAccounts()
-    if (accounts[0]) navigate('/')
-  }
+    if (account) navigate('/')
+  }, [account])
 
   const connectToMetaMask = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -88,7 +86,8 @@ const Auth: FC = () => {
       </Modal>
       <Modal isOpen={isErrorModalOpen}>
         <p className={s.modalText}>
-          Open your MetaMask to complete authentication and click "connect" again
+          Open your MetaMask to complete authentication and click "connect"
+          again
         </p>
         <Button
           fullWidth

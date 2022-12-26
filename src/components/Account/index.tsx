@@ -1,16 +1,16 @@
 import { useStore } from 'effector-react'
 import { FC } from 'react'
-import { $account } from '../../effector/userInfo'
+import { $bank } from '../../effector/userInfo'
 import SectionTitle from '../_common/SectionTitle'
 import s from './styles.module.sass'
 
 const Account: FC = () => {
-  const account = useStore($account)
+  const bank = useStore($bank)
 
   return (
     <div className={s.AccountWrapper}>
       <SectionTitle title='Account' />
-      <p>Total: {account}</p>
+      <p>Total: {bank}</p>
     </div>
   )
 }
