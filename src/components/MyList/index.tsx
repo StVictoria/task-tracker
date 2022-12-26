@@ -16,7 +16,7 @@ const MyList: FC = () => {
         key={item.id}
         id={item.id}
         title={item.title}
-        coins={item.coins}
+        coins={+(item.coins)}
         isUseful={item.useful}
       />
     ))

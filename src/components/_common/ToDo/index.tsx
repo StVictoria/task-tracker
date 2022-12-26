@@ -4,14 +4,20 @@ import { FC, memo, useState } from 'react'
 import s from './styles.module.sass'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useStore } from 'effector-react'
-import { $myList, IToDo, setMyList } from '../../../effector/userInfo'
+import {
+  $bank,
+  $myList,
+  IToDo,
+  setBank,
+  setMyList,
+} from '../../../effector/userInfo'
 import Modal from '../Modal'
 import ConfirmModal from './ConfirmModal'
 
 interface IToDoProps {
   id: number
   isUseful: boolean
-  coins: string | number
+  coins: number
   title: string
 }
 
@@ -20,10 +26,15 @@ const ToDo: FC<IToDoProps> = ({ id, isUseful, coins, title }) => {
   const [isCheckModalOpen, setIsCheckModalOpen] = useState(false)
 
   const myList = useStore($myList)
+  const bank = useStore($bank)
+
+  const isNotEnoughMoney = !isUseful && bank - coins < 0
 
   const handleDeleteToDo = () => {
     setIsDeleteModalOpen(true)
   }
+
+  const handleCheckToDo = () => setBank(isUseful ? bank + coins : bank - coins)
 
   const onDelete = () => {
     const newList: IToDo[] = myList.filter((item) => item.id !== id)
@@ -34,11 +45,25 @@ const ToDo: FC<IToDoProps> = ({ id, isUseful, coins, title }) => {
   return (
     <div className={s.listItem}>
       <div className={s.listItemLeft}>
-        <Checkbox checked={false} onChange={() => setIsCheckModalOpen(true)} />
-        <p title={title}>{title}</p>
+        <Checkbox
+          disabled={isNotEnoughMoney}
+          checked={false}
+          onChange={() => setIsCheckModalOpen(true)}
+        />
+        <p
+          className={`${isNotEnoughMoney ? s.titleDisabled : ''}`}
+          title={isNotEnoughMoney ? 'Not enough money' : title}
+        >
+          {title}
+        </p>
       </div>
 
-      <p className={clsx(s.coins, { [s.notUseful]: !isUseful })}>
+      <p
+        className={clsx(s.coins, {
+          [s.notUseful]: !isUseful,
+          [s.disabled]: isNotEnoughMoney,
+        })}
+      >
         {isUseful ? '+' : '-'}
         {coins}
       </p>
@@ -54,7 +79,7 @@ const ToDo: FC<IToDoProps> = ({ id, isUseful, coins, title }) => {
       />
       <ConfirmModal
         text='Have you really done this?'
-        onSubmit={() => {}}
+        onSubmit={handleCheckToDo}
         isOpen={isCheckModalOpen}
         onClose={() => setIsCheckModalOpen(false)}
       />

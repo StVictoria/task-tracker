@@ -27,6 +27,8 @@ const Auth: FC = () => {
     if (account) navigate('/')
   }, [account])
 
+  
+
   const connectToMetaMask = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     try {

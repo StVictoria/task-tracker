@@ -8,7 +8,7 @@ export interface IToDo {
 }
 
 export const setMyList = createEvent<IToDo[]>()
-export const changeAccount = createEvent<number>()
+export const setBank = createEvent<number>()
 
 export const $myList = createStore([
     { id: 0, title: 'Buy food', useful: true, coins: 200 },
@@ -17,4 +17,4 @@ export const $myList = createStore([
     { id: 3, title: 'Hang out', useful: false, coins: 1000 },
 ] as IToDo[]).on(setMyList, (s, newList: IToDo[]) => newList)
 
-export const $bank = createStore(0 as number).on(changeAccount, (s, newAccount: number) => newAccount)
+export const $bank = createStore(0 as number).on(setBank, (o, newBank: number) => newBank)
