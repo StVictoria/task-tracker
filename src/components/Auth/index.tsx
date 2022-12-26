@@ -1,11 +1,15 @@
 import { Button } from '@mui/material'
 import { ethers } from 'ethers'
 import { FC, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Modal from '../_common/Modal'
 import s from './styles.module.sass'
 
 const Auth: FC = () => {
   const [isInstallMMModalOpen, setIsInstallMMModalOpen] = useState(false)
+  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false)
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (!window.ethereum) {
@@ -15,13 +19,23 @@ const Auth: FC = () => {
     }
   }, [])
 
+  useEffect(() => {
+    console.log(window.ethereum._state.account)
+  }, [window.ethereum._state.account])
+
   const checkExistingAccount = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     const accounts = await provider.listAccounts()
-    if (accounts[0]) {
-      console.log('there is user')
-    } else {
-      console.log('no user')
+    if (accounts[0]) navigate('/')
+  }
+
+  const connectToMetaMask = async () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
+    try {
+      await provider.send('eth_requestAccounts', [])
+      navigate('/')
+    } catch (e) {
+      setIsErrorModalOpen(true)
     }
   }
 
@@ -43,14 +57,14 @@ const Auth: FC = () => {
         variant='contained'
         onClick={
           window.ethereum
-            ? () => console.log('connect')
+            ? connectToMetaMask
             : () => setIsInstallMMModalOpen(true)
         }
       >
         Connect
       </Button>
       <Modal isOpen={isInstallMMModalOpen}>
-        <p className={s.installMMModalText}>
+        <p className={s.modalText}>
           It seems you still don't have MetaMask. <br /> Please{' '}
           <a
             href='https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn'
@@ -61,12 +75,25 @@ const Auth: FC = () => {
             <b>
               <u>install it</u>
             </b>
-          </a> and refresh the page before new try
+          </a>{' '}
+          and refresh the page before new try
         </p>
         <Button
           fullWidth
           variant='outlined'
           onClick={() => setIsInstallMMModalOpen(false)}
+        >
+          OK
+        </Button>
+      </Modal>
+      <Modal isOpen={isErrorModalOpen}>
+        <p className={s.modalText}>
+          Open your MetaMask to complete authentication and click "connect" again
+        </p>
+        <Button
+          fullWidth
+          variant='outlined'
+          onClick={() => setIsErrorModalOpen(false)}
         >
           OK
         </Button>

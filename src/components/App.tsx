@@ -22,7 +22,7 @@ const App: FC = () => {
     if (accounts[0]) {
       console.log('there is user')
     } else {
-      console.log('no user')
+      navigate('/auth')
     }
   }
 
