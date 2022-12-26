@@ -34,7 +34,12 @@ const ToDo: FC<IToDoProps> = ({ id, isUseful, coins, title }) => {
     setIsDeleteModalOpen(true)
   }
 
-  const handleCheckToDo = () => setBank(isUseful ? bank + coins : bank - coins)
+  const handleCheckToDo = () => {
+    setBank(isUseful ? bank + coins : bank - coins)
+    setIsDeleteModalOpen(false)
+    const newList: IToDo[] = myList.filter((item) => item.id !== id)
+    setMyList(newList)
+  }
 
   const onDelete = () => {
     const newList: IToDo[] = myList.filter((item) => item.id !== id)
