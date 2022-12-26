@@ -19,6 +19,20 @@
     height: 1px
     background-color: $disabled_dark
 
+.userInfo
+    padding: 10px 30px
+
+.userInfo > p
+    text-overflow: ellipsis
+    white-space: nowrap
+    overflow: hidden
+    color: $disabled
+    &:not(:last-child)
+        margin-bottom: 5px
+
+.sidebarList
+    padding-top: 20px
+
 .sidebarListItem:not(:last-child)
     margin-bottom: 20px
 
@@ -26,7 +40,7 @@
     display: flex
     align-items: center
     width: 100%
-    padding: 15px 0 15px 30px
+    padding: 15px 0 15px 30px!important
 
 .sidebarLinkTitle
     margin-left: 13px

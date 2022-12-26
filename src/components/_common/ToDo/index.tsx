@@ -49,7 +49,10 @@ const ToDo: FC<IToDoProps> = ({ id, isUseful, coins, title }) => {
 
   return (
     <div className={s.listItem}>
-      <div className={s.listItemLeft}>
+      <div
+        className={s.listItemLeft}
+        title={isNotEnoughMoney ? 'Not enough money' : undefined}
+      >
         <Checkbox
           disabled={isNotEnoughMoney}
           checked={false}
@@ -57,7 +60,7 @@ const ToDo: FC<IToDoProps> = ({ id, isUseful, coins, title }) => {
         />
         <p
           className={`${isNotEnoughMoney ? s.titleDisabled : ''}`}
-          title={isNotEnoughMoney ? 'Not enough money' : title}
+          title={title}
         >
           {title}
         </p>

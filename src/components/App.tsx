@@ -20,7 +20,7 @@ const App: FC = () => {
   }, [])
 
   useEffect(() => {
-    if (account) navigate('/auth')
+    if (!account) navigate('/auth')
   }, [account])
 
   return (

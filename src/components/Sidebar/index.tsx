@@ -1,7 +1,10 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { Drawer, List, ListItem, ListItemButton } from '@mui/material'
 import { IMenu, menu } from '../../static/menu'
 import s from './styles.module.sass'
+import { useStore } from 'effector-react'
+import { $account } from '../../effector/auth'
+import { $bank } from '../../effector/userInfo'
 
 interface ISidebar {
   currentSection: string
@@ -9,6 +12,9 @@ interface ISidebar {
 }
 
 const Sidebar: FC<ISidebar> = ({ currentSection, setCurrentSection }) => {
+  const account = useStore($account)
+  const bank = useStore($bank)
+
   const renderMenu = () =>
     menu.map((item: IMenu) => (
       <ListItem
@@ -35,7 +41,12 @@ const Sidebar: FC<ISidebar> = ({ currentSection, setCurrentSection }) => {
       <div>
         <h1 className={s.logo}>Task Tracker</h1>
         <div className={s.divider} />
-        <List>{renderMenu()}</List>
+        <div className={s.userInfo}>
+          <p>Account: {account}</p>
+          <p>Bank: {bank}</p>
+        </div>
+        <div className={s.divider} />
+        <List className={s.sidebarList}>{renderMenu()}</List>
       </div>
       <footer className={s.authorInfo}>
         Crafted by{' '}
