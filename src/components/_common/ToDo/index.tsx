@@ -1,4 +1,4 @@
-import { Checkbox, IconButton } from '@mui/material'
+import { Button, Checkbox, IconButton } from '@mui/material'
 import clsx from 'clsx'
 import { FC, memo, useState } from 'react'
 import s from './styles.module.sass'
@@ -6,6 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import { useStore } from 'effector-react'
 import { $myList, IToDo, setMyList } from '../../../effector/userInfo'
 import Modal from '../Modal'
+import ConfirmModal from './ConfirmModal'
 
 interface IToDoProps {
   id: number
@@ -45,13 +46,13 @@ const ToDo: FC<IToDoProps> = ({ id, isUseful, coins, title }) => {
         <DeleteIcon />
       </IconButton>
 
-      <Modal
+      <ConfirmModal
         text='Are you sure you want to delete todo?'
         onSubmit={onDelete}
         isOpen={isDeleteModalOpen}
         onClose={() => setIsDeleteModalOpen(false)}
       />
-      <Modal
+      <ConfirmModal
         text='Have you really done this?'
         onSubmit={() => {}}
         isOpen={isCheckModalOpen}
