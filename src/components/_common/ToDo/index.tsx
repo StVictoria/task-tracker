@@ -1,4 +1,4 @@
-import { Button, Checkbox, IconButton } from '@mui/material'
+import { Checkbox, IconButton } from '@mui/material'
 import clsx from 'clsx'
 import { FC, memo, useState } from 'react'
 import s from './styles.module.sass'
@@ -11,17 +11,25 @@ import {
   setBank,
   setMyList,
 } from '../../../effector/userInfo'
-import Modal from '../Modal'
 import ConfirmModal from './ConfirmModal'
 
 interface IToDoProps {
+  noCheckbox?: boolean
+  noDelete?: boolean
   id: number
   isUseful: boolean
   coins: number
   title: string
 }
 
-const ToDo: FC<IToDoProps> = ({ id, isUseful, coins, title }) => {
+const ToDo: FC<IToDoProps> = ({
+  noCheckbox,
+  noDelete,
+  id,
+  isUseful,
+  coins,
+  title,
+}) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const [isCheckModalOpen, setIsCheckModalOpen] = useState(false)
 
@@ -53,11 +61,13 @@ const ToDo: FC<IToDoProps> = ({ id, isUseful, coins, title }) => {
         className={s.listItemLeft}
         title={isNotEnoughMoney ? 'Not enough money' : undefined}
       >
-        <Checkbox
-          disabled={isNotEnoughMoney}
-          checked={false}
-          onChange={() => setIsCheckModalOpen(true)}
-        />
+        {!noCheckbox && (
+          <Checkbox
+            disabled={isNotEnoughMoney}
+            checked={false}
+            onChange={() => setIsCheckModalOpen(true)}
+          />
+        )}
         <p
           className={`${isNotEnoughMoney ? s.titleDisabled : ''}`}
           title={title}
@@ -75,9 +85,11 @@ const ToDo: FC<IToDoProps> = ({ id, isUseful, coins, title }) => {
         {isUseful ? '+' : '-'}
         {coins}
       </p>
-      <IconButton aria-label='delete' onClick={handleDeleteToDo}>
-        <DeleteIcon />
-      </IconButton>
+      {!noDelete && (
+        <IconButton aria-label='delete' onClick={handleDeleteToDo}>
+          <DeleteIcon />
+        </IconButton>
+      )}
 
       <ConfirmModal
         text='Are you sure you want to delete todo?'

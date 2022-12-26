@@ -1,0 +1,35 @@
+@import '/src/styles/vars.sass'
+
+.bankInfo
+    color: $disabled_light
+    font-weight: 400
+
+.historyWrapper
+    max-width: 50vw
+    padding: 20px
+    margin-top: 40px
+
+.historyTitle
+    font-weight: 400
+
+.history
+    position: relative
+    margin-top: 25px!important
+
+.history::before
+    content: ''
+    position: absolute
+    top: -10px
+    left: 0
+    right: 0
+    height: 1px
+    background-color: #f3f3f3
+
+.noHistory
+    max-width: 50vw
+    font-weight: 400
+    margin-top: 40px
+    color: $disabled_light
+    border: 1px solid $disabled_light
+    padding: 20px
+    border-radius: 10px
