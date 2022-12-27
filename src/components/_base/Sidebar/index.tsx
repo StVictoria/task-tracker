@@ -1,11 +1,11 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { Drawer, List, ListItem, ListItemButton } from '@mui/material'
-import { IMenu, menu } from '../../static/menu'
+import { IMenu, menu } from '../../../static/menu'
 import s from './styles.module.sass'
 import { useStore } from 'effector-react'
-import { $account } from '../../effector/auth'
-import { $bank } from '../../effector/userInfo'
-import Logo from '../../assets/logo.svg'
+import { $account } from '../../../effector/auth'
+import { $bank } from '../../../effector/userInfo'
+import Logo from '../../../assets/logo.svg'
 
 interface ISidebar {
   currentSection: string
@@ -26,7 +26,7 @@ const Sidebar: FC<ISidebar> = ({ currentSection, setCurrentSection }) => {
         onClick={() => setCurrentSection(item.to)}
       >
         <ListItemButton className={s.sidebarButton}>
-          <item.icon color='primary' />
+          <item.icon color='primary' className={s.sidebarLinkIcon} />
           <p className={s.sidebarLinkTitle}>{item.title}</p>
         </ListItemButton>
       </ListItem>

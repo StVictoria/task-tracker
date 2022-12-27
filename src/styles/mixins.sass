@@ -1,0 +1,9 @@
+@import "/src/styles/vars"
+
+@mixin adaptive($breakpoint)
+	@if $breakpoint == medium
+		@media (max-width: $medium)
+			@content
+	@if $breakpoint == small
+		@media (max-width: $small)
+			@content

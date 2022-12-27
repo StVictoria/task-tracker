@@ -1,4 +1,4 @@
-@import '/src/styles/vars'
+@import '/src/styles/mixins'
 
 .formWrapper
     margin: 20px 0
@@ -10,14 +10,18 @@
     justify-content: space-between
     width: inherit
 
-.inputWrapper
-    margin-right: 10px
+.inputWrapper:not(:last-child)
+    margin-right: 3%
 
 .todoNameField
     width: 50%
+    @include adaptive(medium)
+        width: 35%
 
 .coinsField
     width: 18%
+    @include adaptive(medium)
+        width: 20%
 
 .checkboxWrapper
     margin-right: 0

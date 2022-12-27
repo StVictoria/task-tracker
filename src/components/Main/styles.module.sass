@@ -1,4 +1,8 @@
+@import '/src/styles/mixins.sass'
+
 .main
-    margin-left: 250px
-    padding: 20px 0px 20px 60px
+    margin-left: $sidebar_large
+    padding: 2vw 0 2vw 4vw
     overflow: hidden
+    @include adaptive(medium)
+        margin-left: $sidebar_medium

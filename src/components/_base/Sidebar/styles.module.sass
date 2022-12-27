@@ -1,4 +1,4 @@
-@import '/src/styles/vars'
+@import '/src/styles/mixins'
 
 .sidebar
     > div
@@ -6,11 +6,15 @@
         flex-direction: column
         justify-content: space-between
         background-color: $black
-        width: 250px
+        width: $sidebar_large
         color: $white
 
+.sidebar > div
+    @include adaptive(medium)
+        width: $sidebar_medium
+
 .logoWrapper
-    padding: 20px 30px
+    padding: 8% 10%
     width: 100%
 
 .logo
@@ -22,7 +26,7 @@
     background-color: $disabled_dark
 
 .userInfo
-    padding: 10px 30px
+    padding: 5% 10%
 
 .userInfo > p
     text-overflow: ellipsis
@@ -33,25 +37,34 @@
         margin-bottom: 5px
 
 .sidebarList
-    padding-top: 20px
+    padding-top: 10%
 
 .sidebarListItem:not(:last-child)
-    margin-bottom: 20px
+    margin-bottom: 3%
 
 .sidebarButton
     display: flex
     align-items: center
     width: 100%
-    padding: 15px 0 15px 30px!important
+    padding: 8% 0 8% 10%!important
+
+.sidebarLinkIcon
+    font-size: $p_large
+    @include adaptive(medium)
+        font-size: $p_medium
+
 
 .sidebarLinkTitle
-    margin-left: 13px
+    margin-left: 3%
 
 .authorInfo
     width: 100%
     text-align: center
-    padding-bottom: 10px
+    padding-bottom: 5%
     color: $disabled_dark
+    font-size: $p_large
+    @include adaptive(medium)
+        font-size: $p_medium
 
 .authorLink
     color: $primary

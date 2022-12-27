@@ -1,3 +1,5 @@
+@import '/src/styles/mixins.sass'
+
 html, body
   margin: 0
   padding: 0
@@ -16,3 +18,8 @@ a
 h1
   margin: 20px 0
   font-size: 28px
+
+p
+  font-size: $p_large
+  @include adaptive(medium)
+    font-size: $p_medium
