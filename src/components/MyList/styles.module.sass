@@ -1,8 +1,10 @@
-@import '/src/styles/vars'
+@import '/src/styles/mixins'
 
 .contentWrapper
     width: 63vw
     max-width: 800px
+    @include adaptive(small)
+        width: 100%
 
 .list
     padding: 20px

@@ -1,3 +1,5 @@
+@import '/src/styles/mixins'
+
 .listItem
     display: flex
     justify-content: space-between
@@ -14,7 +16,11 @@
         text-overflow: ellipsis
         overflow: hidden
         white-space: nowrap
-        
+
+.listItemLeft
+    @include adaptive(small)
+        width: 60%
+
 .titleDisabled
     opacity: 0.3
 

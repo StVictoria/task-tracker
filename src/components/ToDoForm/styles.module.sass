@@ -9,19 +9,28 @@
     display: flex
     justify-content: space-between
     width: inherit
+    @include adaptive(small)
+        flex-direction: column
 
 .inputWrapper:not(:last-child)
     margin-right: 3%
+    @include adaptive(small)
+        margin-right: 0
+        margin-bottom: 3%
 
 .todoNameField
     width: 50%
     @include adaptive(medium)
         width: 35%
+    @include adaptive(small)
+        width: 100%
 
 .coinsField
     width: 18%
     @include adaptive(medium)
         width: 20%
+    @include adaptive(small)
+        width: 100%
 
 .checkboxWrapper
     margin-right: 0
@@ -31,6 +40,12 @@
     justify-content: flex-end
     width: 100%
     margin-top: 30px
+    @include adaptive(small)
+        margin-top: 10px
+        flex-direction: row-reverse
 
 .actions > button
     margin-left: 20px
+    @include adaptive(small)
+        margin-left: 0
+
