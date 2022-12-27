@@ -1,6 +1,10 @@
 @import '/src/styles/mixins'
 
 .sidebar
+    @include adaptive(small)
+        display: none
+
+.sidebar
     > div
         display: flex
         flex-direction: column
@@ -12,6 +16,8 @@
 .sidebar > div
     @include adaptive(medium)
         width: $sidebar_medium
+    @include adaptive(small)
+        width: $sidebar_small
 
 .logoWrapper
     padding: 8% 10%
@@ -52,7 +58,6 @@
     font-size: $p_large
     @include adaptive(medium)
         font-size: $p_medium
-
 
 .sidebarLinkTitle
     margin-left: 3%
