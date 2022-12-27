@@ -1,0 +1,27 @@
+@import '/src/styles/vars.sass'
+
+.mmTooltipWrapper
+    position: relative
+    z-index: 100
+
+.mmTooltipIcon
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 5px
+
+.mmTooltipWrapper:hover
+    .mmTooltipText
+        opacity: 1
+
+.mmTooltipText
+    opacity: 0
+    position: absolute
+    top: 5px
+    left: 40px
+    padding: 5px
+    border-radius: 3px
+    width: 30vw
+    background-color: #d4d4d4
+    color: #868686
+    transition: 1s all

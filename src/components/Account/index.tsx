@@ -30,14 +30,16 @@ const Account: FC = () => {
         <span className={s.bankInfo}>In bank:</span> {bank} coins
       </h3>
 
-      {false ? (
-        <Paper className={s.historyWrapper}>
-          <h3 className={s.historyTitle}>History</h3>
-          <List className={s.history}>{renderHistory()}</List>
-        </Paper>
-      ) : (
-        <p className={s.noHistory}>You don't have history yet</p>
-      )}
+      <Paper className={s.historyWrapper}>
+        {false ? (
+          <>
+            <h3 className={s.historyTitle}>History</h3>
+            <List className={s.history}>{renderHistory()}</List>
+          </>
+        ) : (
+          <p className={s.noHistory}>You don't have history yet</p>
+        )}
+      </Paper>
     </div>
   )
 }

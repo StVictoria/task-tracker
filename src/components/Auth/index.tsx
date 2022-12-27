@@ -4,7 +4,9 @@ import { ethers } from 'ethers'
 import { FC, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { $account, getAccountFx } from '../../effector/auth'
-import Modal from '../_common/Modal'
+import MMTooltip from '../_common/MMToltip'
+import ErrorModal from './ErrorModal'
+import InstallMMModal from './InstallMMModal'
 import s from './styles.module.sass'
 
 const Auth: FC = () => {
@@ -40,17 +42,20 @@ const Auth: FC = () => {
   return (
     <div className={s.authWrapper}>
       <h1>Welcome to Task Tracker</h1>
-      <p className={s.loginDescr}>
-        To start you need to log in with{' '}
-        <a
-          className={s.metamaskLink}
-          href='https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn'
-          target='_blank'
-          rel='noreferrer'
-        >
-          MetaMask
-        </a>
-      </p>
+      <div className={s.loginDescrWrapper}>
+        <p className={s.loginDescr}>
+          To start you need to log in with{' '}
+          <a
+            className={s.metamaskLink}
+            href='https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn'
+            target='_blank'
+            rel='noreferrer'
+          >
+            MetaMask
+          </a>
+        </p>
+        <MMTooltip />
+      </div>
       <Button
         variant='contained'
         onClick={
@@ -61,42 +66,14 @@ const Auth: FC = () => {
       >
         Connect
       </Button>
-      <Modal isOpen={isInstallMMModalOpen}>
-        <p className={s.modalText}>
-          It seems you still don't have MetaMask. <br /> Please{' '}
-          <a
-            href='https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn'
-            target='_blank'
-            rel='noreferrer'
-            className={s.metamaskModalLink}
-          >
-            <b>
-              <u>install it</u>
-            </b>
-          </a>{' '}
-          and refresh the page before new try
-        </p>
-        <Button
-          fullWidth
-          variant='outlined'
-          onClick={() => setIsInstallMMModalOpen(false)}
-        >
-          OK
-        </Button>
-      </Modal>
-      <Modal isOpen={isErrorModalOpen}>
-        <p className={s.modalText}>
-          Open your MetaMask to complete authentication and click "connect"
-          again
-        </p>
-        <Button
-          fullWidth
-          variant='outlined'
-          onClick={() => setIsErrorModalOpen(false)}
-        >
-          OK
-        </Button>
-      </Modal>
+      <InstallMMModal
+        isOpen={isInstallMMModalOpen}
+        onClose={() => setIsInstallMMModalOpen(false)}
+      />
+      <ErrorModal
+        isOpen={isErrorModalOpen}
+        onClose={() => setIsErrorModalOpen(false)}
+      />
     </div>
   )
 }
