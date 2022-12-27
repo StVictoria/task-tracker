@@ -1,40 +1,40 @@
 @import '/src/styles/mixins'
 
-.sidebar
+.menu
     @include adaptive(small)
         display: none
 
-.sidebar
+.menu
     > div
-        position: relative
+        position: fixed
         background-color: $black
         width: $sidebar_large
         color: $white
 
-.sidebar > div
+.menu > div
     @include adaptive(medium)
         width: $sidebar_medium
     @include adaptive(small)
         width: $sidebar_small
 
-.logoWrapper
+.menu_logoWrapper
     padding: 8% 10%
     width: 100%
 
-.logo
+.menu_logo
     width: 100%
 
-.divider
+.menu_divider
     width: 100%
     height: 1px
     background-color: $disabled_dark
 
-.userInfo
+.menu_userInfo
     padding: 5% 10%
     @include adaptive(small)
         padding: 3% 5%
 
-.userInfo > p
+.menu_userInfo > p
     text-overflow: ellipsis
     white-space: nowrap
     overflow: hidden
@@ -42,13 +42,13 @@
     &:not(:last-child)
         margin-bottom: 5px
 
-.sidebarList
+.menu_list
     padding-top: 10%
 
-.sidebarListItem:not(:last-child)
+.menu_listItem:not(:last-child)
     margin-bottom: 3%
 
-.sidebarButton
+.menu_listItemButton
     display: flex
     align-items: center
     width: 100%
@@ -57,28 +57,28 @@
         padding: 3% 0 3% 5%!important
 
 
-.sidebarLinkIcon
+.menu_listItemIcon
     font-size: $p_large
     @include adaptive(medium)
         font-size: $p_medium
 
-.sidebarLinkTitle
+.menu_listItemTitle
     margin-left: 3%
 
-.authorInfo
+.menu_authorInfo
     position: absolute
-    bottom: 50px
+    bottom: 16px
     left: 0
     width: 100%
     text-align: center
-    padding-bottom: 5%
     color: $disabled_dark
     font-size: $p_large
     @include adaptive(medium)
         font-size: $p_medium
     @include adaptive(small)
         font-size: 3vw
+        bottom: 70px
 
-.authorLink
+.menu_authorLink
     color: $primary
     opacity: 0.7

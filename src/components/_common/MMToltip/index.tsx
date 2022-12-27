@@ -4,11 +4,11 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 
 const MMTooltip: FC = () => {
   return (
-    <div className={s.mmTooltipWrapper}>
-      <div className={s.mmTooltipIcon}>
+    <div className={s.mmTooltip_wrapper}>
+      <div className={s.mmTooltip_icon}>
         <HelpOutlineIcon color='primary' />
       </div>
-      <div className={s.mmTooltipText}>
+      <div className={s.mmTooltip_text}>
         <p>
           We don't use any account information other than your address and do
           not initiate any transactions.

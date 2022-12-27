@@ -1,24 +1,24 @@
 @import '/src/styles/mixins.sass'
 
-.bankInfo
+.account_bankInfo
     color: $disabled_light
     font-weight: 400
 
-.historyWrapper
+.account_historyWrapper
     max-width: 50vw
     padding: 20px
     margin-top: 4vw
     @include adaptive(small)
         max-width: 100%
 
-.historyTitle
+.account_historyTitle
     font-weight: 400
 
-.history
+.account_history
     position: relative
     margin-top: 25px!important
 
-.history::before
+.account_history::before
     content: ''
     position: absolute
     top: -10px
@@ -27,7 +27,7 @@
     height: 1px
     background-color: #f3f3f3
 
-.noHistory
+.account_noHistory
     max-width: 50vw
     font-weight: 400
     color: $disabled_light

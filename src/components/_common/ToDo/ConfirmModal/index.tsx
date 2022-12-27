@@ -18,7 +18,7 @@ const ConfirmModal: FC<IConfirmModal> = ({
 }) => {
   return (
     <Modal isOpen={isOpen}>
-      <p className={s.modalText}>{text}</p>
+      <p className={s.confirmModal_text}>{text}</p>
       <Button fullWidth variant='contained' onClick={onSubmit}>
         yes
       </Button>

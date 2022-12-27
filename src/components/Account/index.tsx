@@ -24,23 +24,23 @@ const Account: FC = () => {
     ))
 
   return (
-    <div className={s.accountWrapper}>
+    <>
       <SectionTitle title='Account' />
       <h3>
-        <span className={s.bankInfo}>In bank:</span> {bank} coins
+        <span className={s.account_bankInfo}>In bank:</span> {bank} coins
       </h3>
 
-      <Paper className={s.historyWrapper}>
+      <Paper className={s.account_historyWrapper}>
         {false ? (
           <>
-            <h3 className={s.historyTitle}>History</h3>
-            <List className={s.history}>{renderHistory()}</List>
+            <h3 className={s.account_historyTitle}>History</h3>
+            <List className={s.account_history}>{renderHistory()}</List>
           </>
         ) : (
-          <p className={s.noHistory}>You don't have history yet</p>
+          <p className={s.account_noHistory}>You don't have history yet</p>
         )}
       </Paper>
-    </div>
+    </>
   )
 }
 

@@ -35,9 +35,9 @@ const ToDoForm: FC = () => {
 
   return (
     <Paper>
-      <form className={s.formWrapper} onSubmit={handleSubmit}>
-        <div className={s.inputs}>
-          <div className={`${s.inputWrapper} ${s.todoNameField}`}>
+      <form className={s.todoForm_wrapper} onSubmit={handleSubmit}>
+        <div className={s.todoForm_inputs}>
+          <div className={`${s.todoForm_inputWrapper} ${s.todoForm_nameField}`}>
             <Input
               label='Todo Name'
               name='todoName'
@@ -47,7 +47,9 @@ const ToDoForm: FC = () => {
               onChange={(e) => handleChange(e, 'todoName')}
             />
           </div>
-          <div className={`${s.inputWrapper} ${s.coinsField}`}>
+          <div
+            className={`${s.todoForm_inputWrapper} ${s.todoForm_coinsField}`}
+          >
             <Input
               label='Coins'
               name='coins'
@@ -57,10 +59,10 @@ const ToDoForm: FC = () => {
               onChange={(e) => handleChange(e, 'coins')}
             />
           </div>
-          <div className={`${s.isUsefulField} ${s.inputWrapper}`}>
+          <div className={s.todoForm_inputWrapper}>
             <FormControlLabel
               label='Is it useful?'
-              className={s.checkboxWrapper}
+              className={s.todoForm_checkboxWrapper}
               control={
                 <Checkbox
                   checked={fields.isUseful.value}
@@ -72,7 +74,7 @@ const ToDoForm: FC = () => {
           </div>
         </div>
 
-        <footer className={s.actions}>
+        <footer className={s.todoForm_actions}>
           <Button onClick={() => clearToDoForm()}>Clear</Button>
           <Button variant='contained' startIcon={<AddIcon />} type='submit'>
             Add

@@ -9,7 +9,7 @@ interface IModal {
 
 const Modal: FC<IModal> = ({ isOpen, children }) => {
   return (
-    <div className={clsx(s.modalWrapper, { [s.hidden]: !isOpen })}>
+    <div className={clsx(s.modal_wrapper, { [s.hidden]: !isOpen })}>
       <div className={s.modal}>{children}</div>
     </div>
   )

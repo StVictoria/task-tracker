@@ -6,7 +6,7 @@ interface ISectionTitle {
 }
 
 const SectionTitle: FC<ISectionTitle> = ({ title }) => {
-  return <h2 className={s.title}>{title}</h2>
+  return <h2 className={s.sectionTitle}>{title}</h2>
 }
 
 export default SectionTitle

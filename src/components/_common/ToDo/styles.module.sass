@@ -1,6 +1,6 @@
 @import '/src/styles/mixins'
 
-.listItem
+.todo
     display: flex
     justify-content: space-between
     align-items: center
@@ -8,7 +8,7 @@
     &:not(:last-child)
         margin-bottom: 20px
 
-.listItemLeft
+.todo_leftSide
     display: flex
     align-items: center
     width: 80%
@@ -17,20 +17,20 @@
         overflow: hidden
         white-space: nowrap
 
-.listItemLeft
+.todo_leftSide
     @include adaptive(small)
         width: 60%
 
-.titleDisabled
+.todo_titleDisabled
     opacity: 0.3
 
-.coins
+.todo_coins
     color: #3fc438
     &.notUseful
         color: red
 
-.coins.disabled
+.todo_coins.disabled
     opacity: 0.3
 
-.modalText
+.confirmModal_text
     margin-bottom: 20px

@@ -32,15 +32,15 @@ const Sidebar: FC<ISidebar> = ({ currentSection, setCurrentSection }) => {
         key={item.id}
         disablePadding
         selected={item.to === currentSection}
-        className={s.sidebarListItem}
+        className={s.menu_listItem}
         onClick={() => {
           setIsMobileMenuOpen(false)
           setCurrentSection(item.to)
         }}
       >
-        <ListItemButton className={s.sidebarButton}>
-          <item.icon color='primary' className={s.sidebarLinkIcon} />
-          <p className={s.sidebarLinkTitle}>{item.title}</p>
+        <ListItemButton className={s.menu_listItemButton}>
+          <item.icon color='primary' className={s.menu_listItemIcon} />
+          <p className={s.menu_listItemTitle}>{item.title}</p>
         </ListItemButton>
       </ListItem>
     ))
@@ -48,26 +48,26 @@ const Sidebar: FC<ISidebar> = ({ currentSection, setCurrentSection }) => {
   const renderSidebarContent = () => (
     <>
       {!isMobile && (
-        <div className={s.logoWrapper}>
-          <img src={Logo} className={s.logo} alt='Task Tracker' />
+        <div className={s.menu_logoWrapper}>
+          <img src={Logo} className={s.menu_logo} alt='Task Tracker' />
         </div>
       )}
 
-      <div className={s.divider} />
-      <div className={s.userInfo}>
+      <div className={s.menu_divider} />
+      <div className={s.menu_userInfo}>
         <p>Account: {account}</p>
         <p>Bank: {bank}</p>
       </div>
-      <div className={s.divider} />
-      <List className={s.sidebarList}>{renderMenu()}</List>
+      <div className={s.menu_divider} />
+      <List className={s.menu_list}>{renderMenu()}</List>
 
-      <footer className={s.authorInfo}>
+      <footer className={s.menu_authorInfo}>
         Crafted by{' '}
         <a
           href='https://github.com/StVictoria'
           target='_blank'
           rel='noreferrer'
-          className={s.authorLink}
+          className={s.menu_authorLink}
         >
           StVictoria
         </a>
@@ -87,7 +87,7 @@ const Sidebar: FC<ISidebar> = ({ currentSection, setCurrentSection }) => {
         anchor='left'
         variant='persistent'
         open={true}
-        className={s.sidebar}
+        className={s.menu}
       >
         {renderSidebarContent()}
       </Drawer>

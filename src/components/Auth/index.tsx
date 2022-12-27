@@ -40,13 +40,13 @@ const Auth: FC = () => {
   }
 
   return (
-    <div className={s.authWrapper}>
+    <div className={s.auth_wrapper}>
       <h1>Welcome to Task Tracker</h1>
-      <div className={s.loginDescrWrapper}>
-        <p className={s.loginDescr}>
+      <div className={s.auth_loginDescrWrapper}>
+        <p className={s.auth_loginDescr}>
           To start you need to log in with{' '}
           <a
-            className={s.metamaskLink}
+            className={s.auth_metamaskLink}
             href='https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn'
             target='_blank'
             rel='noreferrer'

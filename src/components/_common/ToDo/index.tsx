@@ -56,9 +56,9 @@ const ToDo: FC<IToDoProps> = ({
   }
 
   return (
-    <div className={s.listItem}>
+    <div className={s.todo}>
       <div
-        className={s.listItemLeft}
+        className={s.todo_leftSide}
         title={isNotEnoughMoney ? 'Not enough money' : undefined}
       >
         {!noCheckbox && (
@@ -69,7 +69,7 @@ const ToDo: FC<IToDoProps> = ({
           />
         )}
         <p
-          className={`${isNotEnoughMoney ? s.titleDisabled : ''}`}
+          className={`${isNotEnoughMoney ? s.todo_titleDisabled : ''}`}
           title={title}
         >
           {title}
@@ -77,7 +77,7 @@ const ToDo: FC<IToDoProps> = ({
       </div>
 
       <p
-        className={clsx(s.coins, {
+        className={clsx(s.todo_coins, {
           [s.notUseful]: !isUseful,
           [s.disabled]: isNotEnoughMoney,
         })}

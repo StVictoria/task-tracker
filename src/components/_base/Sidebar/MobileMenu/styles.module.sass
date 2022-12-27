@@ -1,6 +1,6 @@
 @import '/src/styles/mixins'
 
-.menuWrapper
+.mobileMenu_wrapper
     position: fixed
     display: none
     top: 0
@@ -10,7 +10,7 @@
     @include adaptive(small)
         display: block
 
-.menuContainer
+.mobileMenu_container
     display: flex
     justify-content: space-between
     align-items: center
@@ -19,14 +19,14 @@
     width: 100%
     color: $white
 
-.menuIcon
-    color: $white
-
-.logoMobile
+.mobileMenu_logo
     width: auto
     height: 30px
 
-.menu
+.mobileMenu_menuIcon
+    color: $white
+
+.mobileMenu
     > div
         position: absolute
         top: 60px

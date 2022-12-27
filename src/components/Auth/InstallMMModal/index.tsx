@@ -12,8 +12,8 @@ interface IInstallMMModal {
 const InstallMMModal: FC<IInstallMMModal> = ({ isOpen, onClose }) => {
   return (
     <Modal isOpen={isOpen}>
-      <div className={s.modalText}>
-        <div className={s.aboutMM}>
+      <div className={s.modal_text}>
+        <div className={s.modal_aboutMM}>
           <p>This app uses MetaMask as login service.</p>
           <MMTooltip />
         </div>
@@ -23,7 +23,7 @@ const InstallMMModal: FC<IInstallMMModal> = ({ isOpen, onClose }) => {
             href='https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn'
             target='_blank'
             rel='noreferrer'
-            className={s.metamaskModalLink}
+            className={s.modal_MMModalLink}
           >
             <b>
               <u>install it</u>

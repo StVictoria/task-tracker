@@ -12,20 +12,20 @@ interface IMobileMenu {
 
 const MobileMenu: FC<IMobileMenu> = ({ isOpen, children, toggleMenu }) => {
   return (
-    <div className={s.menuWrapper}>
-      <div className={s.menuContainer}>
-        <div className={s.menuLogoWrapper}>
-          <img src={Logo} className={s.logoMobile} alt='Task Tracker' />
+    <div className={s.mobileMenu_wrapper}>
+      <div className={s.mobileMenu_container}>
+        <div>
+          <img src={Logo} className={s.mobileMenu_logo} alt='Task Tracker' />
         </div>
         <IconButton onClick={toggleMenu}>
-          <MenuIcon className={s.menuIcon} />
+          <MenuIcon className={s.mobileMenu_menuIcon} />
         </IconButton>
       </div>
       <Drawer
         anchor='top'
         variant='persistent'
         open={isOpen}
-        className={s.menu}
+        className={s.mobileMenu}
       >
         {children}
       </Drawer>

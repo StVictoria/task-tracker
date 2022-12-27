@@ -23,12 +23,12 @@ const MyList: FC = () => {
   return (
     <>
       <SectionTitle title='My List' />
-      <div className={s.contentWrapper}>
+      <div className={s.myList_content}>
         <ToDoForm />
         {myList.length !== 0 ? (
-          <Paper className={s.list}>{renderList(myList)}</Paper>
+          <Paper className={s.myList}>{renderList(myList)}</Paper>
         ) : (
-          <p className={s.noToDos}>You don't have any to do yet</p>
+          <p className={s.myList_noToDos}>You don't have any to do yet</p>
         )}
       </div>
     </>
