@@ -1,0 +1,17 @@
+@import '/src/styles/mixins.sass'
+
+.howItWorks_title
+    margin-bottom: 15px
+
+.howItWorks_block
+    max-width: 80%
+    margin-bottom: 40px
+    > p:not(:last-child)
+        margin-bottom: 10px
+
+.howItWorks_block
+    @include adaptive(small)
+        max-width: 100%
+
+.howItWorks_link
+    color: $primary

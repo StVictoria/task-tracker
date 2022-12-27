@@ -66,7 +66,7 @@ const ToDo: FC<IToDoProps> = ({
     // update history
     const removedItem = myList.filter((item) => item.id === id)[0]
     const newHistory = removedItem
-      ? [...history, removedItem]
+      ? [removedItem, ...history]
       : [...history]
     localStorage.setItem(USER_HISTORY, JSON.stringify(newHistory))
     setMyList(newList)

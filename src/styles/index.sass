@@ -19,9 +19,16 @@ h1
   margin: 20px 0
   font-size: 28px
 
-p
+p, button
   font-size: $p_large
   @include adaptive(medium)
     font-size: $p_medium
   @include adaptive(small)
     font-size: $p_small
+
+button
+  border: none
+  background: inherit
+  margin: 0
+  padding: 0
+  cursor: pointer

@@ -13,14 +13,14 @@ interface ICreateToDoDTO {
 export const clearToDoForm = createEvent()
 
 export const createToDoFx = createEffect(async (values: ICreateToDoDTO) => {
-    const newList: IToDo[] = [
-        ...$myList.getState(),
-        {
-            id: $myList.getState().length,
-            title: values.todoName,
-            useful: values.isUseful,
-            coins: +values.coins,
-        },
+    const newList: IToDo[] = [{
+        id: $myList.getState().length,
+        title: values.todoName,
+        useful: values.isUseful,
+        coins: +values.coins,
+    },
+    ...$myList.getState(),
+
     ]
     localStorage.setItem(USER_LIST, JSON.stringify(newList))
     setMyList(newList)

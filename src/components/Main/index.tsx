@@ -1,5 +1,6 @@
 import { FC, useState } from 'react'
 import Account from '../Account'
+import HowItWorks from '../HowItWorks'
 import MyList from '../MyList'
 import Sidebar from '../_base/Sidebar'
 import s from './styles.module.sass'
@@ -16,7 +17,7 @@ const Main: FC = () => {
       <main className={s.main}>
         {currentSection === 'account' && <Account />}
         {currentSection === 'my-list' && <MyList />}
-        {/* {currentSection === 'suggestions' && <Suggestions />} */}
+        {currentSection === 'how-it-works' && <HowItWorks setCurrentSection={setCurrentSection} />}
       </main>
     </>
   )
