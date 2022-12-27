@@ -12,7 +12,7 @@ const ErrorModal: FC<IErrorModal> = ({ isOpen, onClose }) => {
   return (
     <Modal isOpen={isOpen}>
       <p className={s.modalText}>
-        Open your MetaMask to complete authentication and click "connect" again
+        Open your MetaMask to complete authentication
       </p>
       <Button fullWidth variant='outlined' onClick={onClose}>
         OK

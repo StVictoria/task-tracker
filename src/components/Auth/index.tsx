@@ -33,7 +33,7 @@ const Auth: FC = () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     try {
       await provider.send('eth_requestAccounts', [])
-      navigate('/')
+      getAccountFx()
     } catch (e) {
       setIsErrorModalOpen(true)
     }
