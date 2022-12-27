@@ -5,7 +5,7 @@ import s from './styles.module.sass'
 import { Checkbox } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import { useForm } from 'effector-forms'
-import { todoForm, clearToDoForm } from '../../effector/todoForm'
+import { todoForm, clearToDoForm } from '../../models/todoForm'
 
 const ToDoForm: FC = () => {
   const { fields, submit } = useForm(todoForm)

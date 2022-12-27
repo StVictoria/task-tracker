@@ -10,7 +10,7 @@ import {
   IToDo,
   setBank,
   setMyList,
-} from '../../../effector/userInfo'
+} from '../../../models/userInfo'
 import ConfirmModal from './ConfirmModal'
 
 interface IToDoProps {

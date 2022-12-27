@@ -1,6 +1,6 @@
 import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined'
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined'
-import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlined'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
 export interface IMenu {
     id: number
@@ -24,8 +24,8 @@ export const menu: IMenu[] = [
     },
     {
         id: 2,
-        title: 'Suggestions',
-        icon: TipsAndUpdatesOutlinedIcon,
-        to: 'suggestions',
+        title: 'How it works',
+        icon: HelpOutlineIcon,
+        to: 'how-it-works',
     },
 ]

@@ -1,7 +1,7 @@
 import { List, Paper } from '@mui/material'
 import { useStore } from 'effector-react'
 import { FC } from 'react'
-import { $bank, $myList, IToDo } from '../../effector/userInfo'
+import { $bank, $myList, IToDo } from '../../models/userInfo'
 import SectionTitle from '../_common/SectionTitle'
 import ToDo from '../_common/ToDo'
 import s from './styles.module.sass'
