@@ -5,6 +5,7 @@ import s from './styles.module.sass'
 import { useStore } from 'effector-react'
 import { $account } from '../../effector/auth'
 import { $bank } from '../../effector/userInfo'
+import Logo from '../../assets/logo.svg'
 
 interface ISidebar {
   currentSection: string
@@ -39,7 +40,10 @@ const Sidebar: FC<ISidebar> = ({ currentSection, setCurrentSection }) => {
       className={s.sidebar}
     >
       <div>
-        <h1 className={s.logo}>Task Tracker</h1>
+        <div className={s.logoWrapper}>
+          <img src={Logo} className={s.logo} alt='Task Tracker' />
+        </div>
+
         <div className={s.divider} />
         <div className={s.userInfo}>
           <p>Account: {account}</p>
