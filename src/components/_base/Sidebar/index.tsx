@@ -15,6 +15,7 @@ interface ISidebar {
 
 const Sidebar: FC<ISidebar> = ({ currentSection, setCurrentSection }) => {
   const [isMobile, setIsMobile] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const account = useStore($account)
   const bank = useStore($bank)
@@ -32,7 +33,10 @@ const Sidebar: FC<ISidebar> = ({ currentSection, setCurrentSection }) => {
         disablePadding
         selected={item.to === currentSection}
         className={s.sidebarListItem}
-        onClick={() => setCurrentSection(item.to)}
+        onClick={() => {
+          setIsMobileMenuOpen(false)
+          setCurrentSection(item.to)
+        }}
       >
         <ListItemButton className={s.sidebarButton}>
           <item.icon color='primary' className={s.sidebarLinkIcon} />
@@ -74,7 +78,11 @@ const Sidebar: FC<ISidebar> = ({ currentSection, setCurrentSection }) => {
 
   return (
     <>
-      <MobileMenu children={renderSidebarContent()} />
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        children={renderSidebarContent()}
+        toggleMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      />
       <Drawer
         anchor='left'
         variant='persistent'
