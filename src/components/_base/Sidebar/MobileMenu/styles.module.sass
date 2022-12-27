@@ -1,5 +1,5 @@
 @import '/src/styles/mixins'
-    
+
 .menuWrapper
     position: fixed
     display: none
@@ -10,8 +10,6 @@
     @include adaptive(small)
         display: block
 
-
-
 .menuContainer
     display: flex
     justify-content: space-between
@@ -19,6 +17,7 @@
     padding: 10px
     background-color: $black
     width: 100%
+    color: $white
 
 .menuIcon
     color: $white
@@ -36,3 +35,4 @@
         background-color: $black
         z-index: -1
         min-height: 100vh
+        color: $white

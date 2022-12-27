@@ -6,9 +6,7 @@
 
 .sidebar
     > div
-        display: flex
-        flex-direction: column
-        justify-content: space-between
+        position: relative
         background-color: $black
         width: $sidebar_large
         color: $white
@@ -33,6 +31,8 @@
 
 .userInfo
     padding: 5% 10%
+    @include adaptive(small)
+        padding: 3% 5%
 
 .userInfo > p
     text-overflow: ellipsis
@@ -53,6 +53,9 @@
     align-items: center
     width: 100%
     padding: 8% 0 8% 10%!important
+    @include adaptive(small)
+        padding: 3% 0 3% 5%!important
+
 
 .sidebarLinkIcon
     font-size: $p_large
@@ -63,6 +66,9 @@
     margin-left: 3%
 
 .authorInfo
+    position: absolute
+    bottom: 50px
+    left: 0
     width: 100%
     text-align: center
     padding-bottom: 5%
@@ -70,6 +76,8 @@
     font-size: $p_large
     @include adaptive(medium)
         font-size: $p_medium
+    @include adaptive(small)
+        font-size: 3vw
 
 .authorLink
     color: $primary
