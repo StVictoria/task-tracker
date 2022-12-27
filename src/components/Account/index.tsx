@@ -26,7 +26,7 @@ const Account: FC = () => {
   return (
     <>
       <SectionTitle title='Account' />
-      <h3>
+      <h3 className={s.account_bank}>
         <span className={s.account_bankInfo}>In bank:</span> {bank} coins
       </h3>
 

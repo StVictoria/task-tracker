@@ -1,5 +1,13 @@
 @import '/src/styles/mixins.sass'
 
+.account_bank
+    margin-top: 3vw
+    font-size: 1.4vw
+    @include adaptive(medium)
+        font-size: 2vw
+    @include adaptive(small)
+        font-size: 18px
+
 .account_bankInfo
     color: $disabled_light
     font-weight: 400
@@ -10,6 +18,7 @@
     margin-top: 4vw
     @include adaptive(small)
         max-width: 100%
+        margin-top: 30px
 
 .account_historyTitle
     font-weight: 400
