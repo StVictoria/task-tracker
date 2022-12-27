@@ -1,6 +1,6 @@
 import { createStore, createEffect, createEvent, forward } from 'effector';
 import { ethers } from 'ethers';
-import { USER_ID } from '../constants/LOCALSTORAGE_VALUES';
+import { USER_ID } from '../constants/LOCALSTORAGE_KEYS';
 
 const setAccount = createEvent<string>()
 

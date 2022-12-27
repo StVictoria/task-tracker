@@ -55,7 +55,7 @@ const Sidebar: FC<ISidebar> = ({ currentSection, setCurrentSection }) => {
 
       <div className={s.menu_divider} />
       <div className={s.menu_userInfo}>
-        <p>Account: {account}</p>
+        <p>Account: {account || 'user'}</p>
         <p>Bank: {bank}</p>
       </div>
       <div className={s.menu_divider} />
@@ -83,12 +83,7 @@ const Sidebar: FC<ISidebar> = ({ currentSection, setCurrentSection }) => {
         children={renderSidebarContent()}
         toggleMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       />
-      <Drawer
-        anchor='left'
-        variant='persistent'
-        open={true}
-        className={s.menu}
-      >
+      <Drawer anchor='left' variant='persistent' open={true} className={s.menu}>
         {renderSidebarContent()}
       </Drawer>
     </>

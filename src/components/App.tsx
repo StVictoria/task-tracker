@@ -4,8 +4,13 @@ import Auth from './Auth'
 import Main from './Main'
 import { $account, getAccountFx } from '../models/auth'
 import { useStore } from 'effector-react'
-import { USER_ID, USER_LIST } from '../constants/LOCALSTORAGE_VALUES'
-import { IToDo, setMyList } from '../models/userInfo'
+import {
+  USER_BANK,
+  USER_HISTORY,
+  USER_ID,
+  USER_LIST,
+} from '../constants/LOCALSTORAGE_KEYS'
+import { IToDo, setBank, setHistory, setMyList } from '../models/userInfo'
 
 const App: FC = () => {
   // const account = useStore($account)
@@ -25,12 +30,12 @@ const App: FC = () => {
   // }, [account])
 
   useEffect(() => {
-    if (localStorage.getItem(USER_LIST)) {
-      const userList: IToDo[] = JSON.parse(
-        localStorage.getItem(USER_LIST) || '[]'
-      )
-      setMyList(userList)
-    }
+    const userList: IToDo[] = JSON.parse(
+      localStorage.getItem(USER_LIST) || '[]'
+    )
+    setMyList(userList)
+    setBank(+localStorage.getItem(USER_BANK)! || 0)
+    setHistory(JSON.parse(localStorage.getItem(USER_HISTORY) || '[]'))
   }, [])
 
   return (

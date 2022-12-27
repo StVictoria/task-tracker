@@ -6,12 +6,19 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import { useStore } from 'effector-react'
 import {
   $bank,
+  $history,
   $myList,
   IToDo,
   setBank,
+  setHistory,
   setMyList,
 } from '../../../models/userInfo'
 import ConfirmModal from './ConfirmModal'
+import {
+  USER_BANK,
+  USER_HISTORY,
+  USER_LIST,
+} from '../../../constants/LOCALSTORAGE_KEYS'
 
 interface IToDoProps {
   noCheckbox?: boolean
@@ -30,23 +37,40 @@ const ToDo: FC<IToDoProps> = ({
   coins,
   title,
 }) => {
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
-  const [isCheckModalOpen, setIsCheckModalOpen] = useState(false)
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false)
+  const [isCheckModalOpen, setIsCheckModalOpen] = useState<boolean>(false)
 
-  const myList = useStore($myList)
-  const bank = useStore($bank)
+  const myList: IToDo[] = useStore($myList)
+  const history: IToDo[] = useStore($history)
+  const bank: number = useStore($bank)
 
-  const isNotEnoughMoney = !isUseful && bank - coins < 0
+  const isNotEnoughMoney: boolean = !isUseful && bank - coins < 0
 
   const handleDeleteToDo = () => {
     setIsDeleteModalOpen(true)
   }
 
   const handleCheckToDo = () => {
-    setBank(isUseful ? bank + coins : bank - coins)
+    // set bank
+    const newBank = isUseful ? bank + coins : bank - coins
+    localStorage.setItem(USER_BANK, newBank.toString())
+    setBank(newBank)
+
+    // close modal
     setIsDeleteModalOpen(false)
+
+    // update user list
     const newList: IToDo[] = myList.filter((item) => item.id !== id)
+    localStorage.setItem(USER_LIST, JSON.stringify(newList))
+
+    // update history
+    const removedItem = myList.filter((item) => item.id === id)[0]
+    const newHistory = removedItem
+      ? [...history, removedItem]
+      : [...history]
+    localStorage.setItem(USER_HISTORY, JSON.stringify(newHistory))
     setMyList(newList)
+    setHistory(newHistory)
   }
 
   const onDelete = () => {
