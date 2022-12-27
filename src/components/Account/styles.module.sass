@@ -1,4 +1,4 @@
-@import '/src/styles/vars.sass'
+@import '/src/styles/mixins.sass'
 
 .bankInfo
     color: $disabled_light
@@ -8,6 +8,8 @@
     max-width: 50vw
     padding: 20px
     margin-top: 4vw
+    @include adaptive(small)
+        max-width: 100%
 
 .historyTitle
     font-weight: 400
