@@ -55,7 +55,7 @@ const Sidebar: FC<ISidebar> = ({ currentSection, setCurrentSection }) => {
 
       <div className={s.menu_divider} />
       <div className={s.menu_userInfo}>
-        <p>Account: {account || 'user'}</p>
+        {/* <p>Account: {account || 'user'}</p> */}
         <p>Bank: {bank}</p>
       </div>
       <div className={s.menu_divider} />

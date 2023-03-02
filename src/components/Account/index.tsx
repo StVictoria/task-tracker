@@ -13,8 +13,7 @@ const Account: FC = () => {
   const renderHistory = () =>
     history.map((item: IToDo) => (
       <ToDo
-        noCheckbox
-        noDelete
+        isHistoryItem
         key={item.id}
         id={item.id}
         title={item.title}

@@ -21,8 +21,7 @@ import {
 } from '../../../constants/LOCALSTORAGE_KEYS'
 
 interface IToDoProps {
-  noCheckbox?: boolean
-  noDelete?: boolean
+  isHistoryItem?: boolean
   id: number
   isUseful: boolean
   coins: number
@@ -30,8 +29,7 @@ interface IToDoProps {
 }
 
 const ToDo: FC<IToDoProps> = ({
-  noCheckbox,
-  noDelete,
+  isHistoryItem,
   id,
   isUseful,
   coins,
@@ -83,9 +81,9 @@ const ToDo: FC<IToDoProps> = ({
     <div className={s.todo}>
       <div
         className={s.todo_leftSide}
-        title={isNotEnoughMoney ? 'Not enough money' : undefined}
+        title={isNotEnoughMoney && !isHistoryItem ? 'Not enough money' : undefined}
       >
-        {!noCheckbox && (
+        {!isHistoryItem && (
           <Checkbox
             disabled={isNotEnoughMoney}
             checked={false}
@@ -93,7 +91,7 @@ const ToDo: FC<IToDoProps> = ({
           />
         )}
         <p
-          className={`${isNotEnoughMoney ? s.todo_titleDisabled : ''}`}
+          className={`${isNotEnoughMoney && !isHistoryItem ? s.todo_titleDisabled : ''}`}
           title={title}
         >
           {title}
@@ -103,13 +101,13 @@ const ToDo: FC<IToDoProps> = ({
       <p
         className={clsx(s.todo_coins, {
           [s.notUseful]: !isUseful,
-          [s.disabled]: isNotEnoughMoney,
+          [s.disabled]: isNotEnoughMoney && !isHistoryItem,
         })}
       >
         {isUseful ? '+' : '-'}
         {coins}
       </p>
-      {!noDelete && (
+      {!isHistoryItem && (
         <IconButton aria-label='delete' onClick={handleDeleteToDo}>
           <DeleteIcon />
         </IconButton>
